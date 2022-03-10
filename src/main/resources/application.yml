@@ -1,0 +1,42 @@
+info:
+  app:
+    name: Vuttr
+    description: Startaideia challenge
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /monitor
+
+spring:
+
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: changeme
+    username: postgres
+    url: jdbc:postgresql://localhost:5435/vuttr?useSSL=false
+    configuration:
+      auto-commit: false
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+
+server:
+  port: 3000
+  connection-timeout: 1800
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /api-docs-ui
+  api-docs:
+    path: /api-docs
+  show-actuator: true
